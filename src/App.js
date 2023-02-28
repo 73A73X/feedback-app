@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Header from "./components/Header";
+import FeedbackList from "./components/FeedbackList";
+import FeedbackData from "./data/FeedbackData";
+
+/* All of the components coming as one on this main component
+which of course is App.js. So we have the individual components 
+designed to perform a certain task or hold a certain data.*/
+
+/* We also get the FeedbackData from the component by passing 
+it to a useState(FeedbackData) */
+
+/* Also below we have the App level state which needs to be 
+accessed within our FeedbackList, so we pass a prop feedback 
+to a FeedbackList */
 
 function App() {
+  const [feedback, setFeedback] = useState(FeedbackData);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <div className="container">
+        <FeedbackList feedback={feedback} />
+      </div>
+    </>
   );
 }
 
